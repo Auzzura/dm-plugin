@@ -37,6 +37,9 @@ OpenAI OAuth discovery with dynamic client registration and the `mcp` scope;
 the DM service remains responsible for login, consent, installation/profile
 grants, workspace isolation, and permission checks.
 
+The public package also includes `assets/dm-logo.svg` for marketplace listing
+metadata. It contains no tracking code or runtime behavior.
+
 Run `npm run validate` to check the package structure and `npm run release` to
 build a deterministic ZIP from the committed package contents. Release output
 is not a marketplace submission. Run `npm run verify:endpoint` for a

@@ -13,6 +13,7 @@ Verified locally:
   OpenAI-specific server auth extension is checked separately because the
   Agent Plugins 1.0 MCP schema is a closed portable shape;
 - the package contains one remote `streamable-http` server;
+- the package includes the public `assets/dm-logo.svg` listing asset;
 - the OpenAI extension declares DCR OAuth with the `mcp` scope, without a
   client ID or secret;
 - no credentials, authorization headers, placeholder URL, local executable,

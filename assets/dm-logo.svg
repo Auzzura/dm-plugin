@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">DM</title>
+  <desc id="desc">A dark blue square with a teal DM monogram.</desc>
+  <rect width="512" height="512" rx="96" fill="#10243e"/>
+  <path d="M111 365V147h72c72 0 112 39 112 109s-40 109-112 109h-72Zm55-47h16c38 0 58-18 58-62s-20-62-58-62h-16v124Z" fill="#f7fbff"/>
+  <path d="M304 365V147h54l46 99 46-99h54v218h-53V242l-31 69h-32l-31-69v123h-53Z" fill="#47d7c3"/>
+</svg>

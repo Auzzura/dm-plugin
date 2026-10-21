@@ -13,7 +13,14 @@
   "keywords": ["decisions", "governance", "context", "evidence"],
   "extensions": {
     "com.openai": {
-      "onboardingSkill": "./skills/dm-get-started/SKILL.md"
+      "onboardingSkill": "./skills/dm-get-started/SKILL.md",
+      "interface": {
+        "displayName": "DM",
+        "shortDescription": "Approved decision context with evidence and permissions.",
+        "developerName": "AuzzurA",
+        "category": "Productivity",
+        "logo": "./assets/dm-logo.svg"
+      }
     }
   }
 }

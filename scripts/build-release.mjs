@@ -17,7 +17,7 @@ const prefix = `dm-plugin-${version}`;
 const stageRoot = path.join(stage, prefix);
 const tracked = execFileSync(
   "git",
-  ["ls-files", "--", "LICENSE", "README.md", "CHANGELOG.md", "mcp.json", "plugin.json", "skills", "scripts", "package.json", "package-lock.json"],
+  ["ls-files", "--", "LICENSE", "README.md", "CHANGELOG.md", "mcp.json", "plugin.json", "assets", "skills", "scripts", "package.json", "package-lock.json"],
   { cwd: root, encoding: "utf8" },
 ).trim().split("\n").filter(Boolean).sort();
 const fixedTime = new Date("2026-01-01T00:00:00.000Z");

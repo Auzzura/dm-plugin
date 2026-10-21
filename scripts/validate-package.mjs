@@ -55,6 +55,9 @@ const openAiPluginExtension = plugin.extensions?.["com.openai"];
 if (openAiPluginExtension?.onboardingSkill !== "./skills/dm-get-started/SKILL.md") {
   fail("OpenAI onboardingSkill must point to the bundled getting-started skill");
 }
+if (openAiPluginExtension.interface?.logo !== "./assets/dm-logo.svg") {
+  fail("OpenAI interface logo must point to the bundled public logo");
+}
 const openAiServerExtension = server.extensions?.["com.openai"];
 if (openAiServerExtension?.auth?.type !== "oauth") fail("OpenAI MCP auth must be declared as OAuth");
 if (openAiServerExtension.auth.client?.mode !== "dcr") fail("OpenAI OAuth must declare dynamic client registration");
@@ -67,7 +70,7 @@ const skill = fs.readFileSync(skillPath, "utf8");
 if (!skill.startsWith("---\n") || !skill.includes("\nname: dm-get-started\n") || !skill.includes("\ndescription: ")) fail("skill frontmatter is incomplete");
 if (!skill.includes("Never auto-approve")) fail("skill must preserve human approval boundary");
 
-for (const relativePath of ["plugin.json", "mcp.json", "README.md", "LICENSE", "skills/dm-get-started/SKILL.md"]) {
+for (const relativePath of ["plugin.json", "mcp.json", "README.md", "LICENSE", "assets/dm-logo.svg", "skills/dm-get-started/SKILL.md"]) {
   if (!fs.existsSync(path.join(root, relativePath))) fail(`missing required package path: ${relativePath}`);
   if (path.isAbsolute(relativePath) || relativePath.includes("..")) fail(`unsafe package path: ${relativePath}`);
 }
