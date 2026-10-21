@@ -39,7 +39,9 @@ grants, workspace isolation, and permission checks.
 
 Run `npm run validate` to check the package structure and `npm run release` to
 build a deterministic ZIP from the committed package contents. Release output
-is not a marketplace submission.
+is not a marketplace submission. Run `npm run verify:endpoint` for a
+credential-free, read-only check of the documented production health,
+discovery, protected-resource, and unauthenticated MCP challenge surfaces.
 
 ## Boundaries
 

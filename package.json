@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "validate": "node scripts/validate-package.mjs",
-    "release": "node scripts/build-release.mjs"
+    "release": "node scripts/build-release.mjs",
+    "verify:endpoint": "node scripts/verify-endpoint.mjs"
   },
   "devDependencies": {
     "ajv": "^8.17.1",

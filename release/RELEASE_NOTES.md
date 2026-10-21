@@ -18,6 +18,8 @@ Verified locally:
 - no credentials, authorization headers, placeholder URL, local executable,
   hook, customer data, or private backend source is included;
 - the ZIP is created from the committed tree with a fixed archive timestamp;
+- the credential-free endpoint verifier passes health, OAuth discovery,
+  protected-resource metadata, and the unauthenticated MCP challenge;
 - the package skill preserves DM login, workspace, Agent Installation/profile,
   OAuth consent, permission boundaries, and human approval.
 
