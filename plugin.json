@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "auzzura-dm",
+  "version": "0.1.0",
+  "description": "Use approved, evidence-backed decision context from DM with an authorized AI client.",
+  "author": {
+    "name": "AuzzurA",
+    "url": "https://github.com/Auzzura"
+  },
+  "homepage": "https://github.com/Auzzura/dm-plugin",
+  "repository": "https://github.com/Auzzura/dm-plugin",
+  "license": "MIT",
+  "keywords": ["decisions", "governance", "context", "evidence"]
+}

@@ -10,15 +10,33 @@ quotas, approval gates, and MCP implementation remain in
 [`Auzzura/DM-Core`](https://github.com/Auzzura/DM-Core).
 
 The public package does not contain backend source code, credentials, customer
-data, private product documents, or provider tokens. A release manifest and
-remote MCP URL are added only after the endpoint and client compatibility have
-been verified.
+data, private product documents, or provider tokens. The v0.1.0 package points
+at the externally reachable DM MCP origin recorded in the release ledger. The
+endpoint's public discovery and unauthenticated protection boundary are
+verified; authenticated client interoperability remains a separate test gate.
 
 ## Status
 
-The repository is being prepared for the shared OpenAI, Cursor, and Claude
-distribution paths. No marketplace listing or publication is implied by this
-repository existing.
+The repository contains the shared OpenAI, Cursor, and Claude distribution
+assets. No marketplace listing or publication is implied by this repository
+existing.
+
+## Setup
+
+1. Sign in to DM and create or select the target workspace.
+2. Configure an authorized DM Agent installation and access profile.
+3. Install or configure this package in the AI client and complete the DM
+   OAuth consent screen.
+4. Use approved decision context and review any proposed updates in DM before
+   they become durable memory.
+
+The package exposes one remote Streamable HTTP server, `dm`, at
+`https://api.dm.auzzura.com/mcp`. It contains no bearer token, client secret,
+header, hook, local executable, or automatic grant path.
+
+Run `npm run validate` to check the package structure and `npm run release` to
+build a deterministic ZIP from the committed package contents. Release output
+is not a marketplace submission.
 
 ## Boundaries
 

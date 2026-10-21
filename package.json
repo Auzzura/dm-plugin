@@ -1,0 +1,13 @@
+{
+  "name": "@auzzura/dm-plugin-release-tools",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate-package.mjs",
+    "release": "node scripts/build-release.mjs"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  }
+}
