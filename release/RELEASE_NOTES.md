@@ -1,0 +1,25 @@
+# DM plugin 0.1.0 release notes
+
+Status: **release-train candidate — not submitted**
+
+This candidate packages one portable Agent Plugins root for OpenAI ChatGPT /
+Codex and Cursor, with a shared DM remote MCP connection and one minimal setup
+skill. Claude can use the same public remote connector assets; no Claude-only
+server or hook is included.
+
+Verified locally:
+
+- official portable plugin and MCP schemas validate;
+- the package contains one remote `streamable-http` server;
+- no credentials, authorization headers, placeholder URL, local executable,
+  hook, customer data, or private backend source is included;
+- the ZIP is created from the committed tree with a fixed archive timestamp;
+- the package skill preserves DM login, workspace, Agent Installation/profile,
+  OAuth consent, permission boundaries, and human approval.
+
+Not claimed by this candidate:
+
+- authenticated ChatGPT/Codex, Cursor, Claude web, or Claude Code calls;
+- marketplace scan, submission, acceptance, or publication;
+- production rollout, Free/Free-Trial client interoperability, or commercial
+  approval.
