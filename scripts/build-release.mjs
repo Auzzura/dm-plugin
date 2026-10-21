@@ -10,7 +10,7 @@ const archive = path.join(outputDir, `dm-plugin-${version}.zip`);
 fs.mkdirSync(outputDir, { recursive: true });
 if (fs.existsSync(archive)) fs.rmSync(archive);
 
-execFileSync("npm", ["run", "validate"], { cwd: root, stdio: "inherit" });
+execFileSync(process.execPath, ["scripts/validate-package.mjs"], { cwd: root, stdio: "inherit" });
 execFileSync("git", ["archive", "--format=zip", `--prefix=dm-plugin-${version}/`, "HEAD", "--", "LICENSE", "README.md", "mcp.json", "plugin.json", "skills", "scripts", "package.json", "package-lock.json"], { cwd: root, stdio: "inherit" });
 const temporary = path.join(root, `dm-plugin-${version}.zip`);
 fs.renameSync(temporary, archive);
