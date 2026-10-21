@@ -9,8 +9,12 @@ server or hook is included.
 
 Verified locally:
 
-- official portable plugin and MCP schemas validate;
+- official portable plugin and portable MCP core schemas validate; the
+  OpenAI-specific server auth extension is checked separately because the
+  Agent Plugins 1.0 MCP schema is a closed portable shape;
 - the package contains one remote `streamable-http` server;
+- the OpenAI extension declares DCR OAuth with the `mcp` scope, without a
+  client ID or secret;
 - no credentials, authorization headers, placeholder URL, local executable,
   hook, customer data, or private backend source is included;
 - the ZIP is created from the committed tree with a fixed archive timestamp;

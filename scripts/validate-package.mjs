@@ -72,4 +72,4 @@ for (const relativePath of ["plugin.json", "mcp.json", "README.md", "LICENSE", "
   if (path.isAbsolute(relativePath) || relativePath.includes("..")) fail(`unsafe package path: ${relativePath}`);
 }
 
-if (process.exitCode !== 1) console.log("package validation passed: schemas, paths, endpoint, skill, and secret checks");
+if (process.exitCode !== 1) console.log("package validation passed: portable schemas, client extensions, paths, endpoint, skill, and secret checks");
