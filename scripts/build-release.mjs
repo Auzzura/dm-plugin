@@ -11,8 +11,8 @@ fs.mkdirSync(outputDir, { recursive: true });
 if (fs.existsSync(archive)) fs.rmSync(archive);
 
 execFileSync(process.execPath, ["scripts/validate-package.mjs"], { cwd: root, stdio: "inherit" });
-execFileSync("git", ["archive", "--format=zip", `--prefix=dm-plugin-${version}/`, "HEAD", "--", "LICENSE", "README.md", "mcp.json", "plugin.json", "skills", "scripts", "package.json", "package-lock.json"], { cwd: root, stdio: "inherit" });
 const temporary = path.join(root, `dm-plugin-${version}.zip`);
+execFileSync("git", ["archive", "--format=zip", `--output=${temporary}`, `--prefix=dm-plugin-${version}/`, "HEAD", "--", "LICENSE", "README.md", "mcp.json", "plugin.json", "skills", "scripts", "package.json", "package-lock.json"], { cwd: root, stdio: "inherit" });
 fs.renameSync(temporary, archive);
 const checksum = execFileSync("sha256sum", [archive], { cwd: root, encoding: "utf8" }).trim();
 fs.writeFileSync(path.join(outputDir, `dm-plugin-${version}.sha256`), `${checksum}\n`);
