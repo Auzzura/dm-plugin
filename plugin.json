@@ -10,5 +10,10 @@
   "homepage": "https://github.com/Auzzura/dm-plugin",
   "repository": "https://github.com/Auzzura/dm-plugin",
   "license": "MIT",
-  "keywords": ["decisions", "governance", "context", "evidence"]
+  "keywords": ["decisions", "governance", "context", "evidence"],
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/dm-get-started/SKILL.md"
+    }
+  }
 }

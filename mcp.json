@@ -3,7 +3,18 @@
   "mcpServers": {
     "dm": {
       "type": "streamable-http",
-      "url": "https://api.dm.auzzura.com/mcp"
+      "url": "https://api.dm.auzzura.com/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": {
+              "mode": "dcr"
+            },
+            "baseScopes": ["mcp"]
+          }
+        }
+      }
     }
   }
 }

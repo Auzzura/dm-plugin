@@ -24,7 +24,13 @@ const loadSchema = async (uri) => {
   return response.json();
 };
 
-for (const [label, document, schemaUri] of [["plugin.json", plugin, pluginSchema], ["mcp.json", mcp, mcpSchema]]) {
+const portableMcp = structuredClone(mcp);
+// Agent Plugins 1.0.0 defines a closed portable MCP shape. OpenAI's current
+// submission format adds a client extension on each server, so validate the
+// portable core separately and validate that extension below.
+delete portableMcp.mcpServers.dm.extensions;
+
+for (const [label, document, schemaUri] of [["plugin.json", plugin, pluginSchema], ["mcp.json", portableMcp, mcpSchema]]) {
   try {
     const schema = await loadSchema(schemaUri);
     const validate = ajv.compile(schema);
@@ -44,6 +50,17 @@ if (server.type !== "streamable-http") fail("dm server must use streamable-http"
 if (server.url !== "https://api.dm.auzzura.com/mcp") fail("dm server URL is not the verified canonical endpoint");
 if (server.url.includes("<") || server.url.includes("example.com") || server.url.includes("localhost")) fail("placeholder or local URL found");
 if (JSON.stringify(mcp).match(/(token|secret|password|authorization|api[_-]?key)/i)) fail("credential-like field found in mcp.json");
+
+const openAiPluginExtension = plugin.extensions?.["com.openai"];
+if (openAiPluginExtension?.onboardingSkill !== "./skills/dm-get-started/SKILL.md") {
+  fail("OpenAI onboardingSkill must point to the bundled getting-started skill");
+}
+const openAiServerExtension = server.extensions?.["com.openai"];
+if (openAiServerExtension?.auth?.type !== "oauth") fail("OpenAI MCP auth must be declared as OAuth");
+if (openAiServerExtension.auth.client?.mode !== "dcr") fail("OpenAI OAuth must declare dynamic client registration");
+if (!openAiServerExtension.auth.baseScopes?.includes("mcp")) fail("OpenAI OAuth must request the mcp scope");
+if (Object.prototype.hasOwnProperty.call(openAiServerExtension.auth, "clientId")) fail("clientId must not be committed at the auth level");
+if (Object.prototype.hasOwnProperty.call(openAiServerExtension.auth.client ?? {}, "clientId")) fail("clientId must not be committed for a DCR client");
 
 const skillPath = path.join(root, "skills/dm-get-started/SKILL.md");
 const skill = fs.readFileSync(skillPath, "utf8");

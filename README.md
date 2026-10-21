@@ -32,7 +32,10 @@ existing.
 
 The package exposes one remote Streamable HTTP server, `dm`, at
 `https://api.dm.auzzura.com/mcp`. It contains no bearer token, client secret,
-header, hook, local executable, or automatic grant path.
+header, hook, local executable, or automatic grant path. The package declares
+OpenAI OAuth discovery with dynamic client registration and the `mcp` scope;
+the DM service remains responsible for login, consent, installation/profile
+grants, workspace isolation, and permission checks.
 
 Run `npm run validate` to check the package structure and `npm run release` to
 build a deterministic ZIP from the committed package contents. Release output
