@@ -25,6 +25,7 @@ for (const relativePath of tracked) {
   const destination = path.join(stageRoot, relativePath);
   fs.mkdirSync(path.dirname(destination), { recursive: true });
   fs.copyFileSync(path.join(root, relativePath), destination);
+  fs.chmodSync(destination, 0o644);
   fs.utimesSync(destination, fixedTime, fixedTime);
 }
 const archiveName = path.basename(archive);
