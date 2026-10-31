@@ -40,7 +40,7 @@ for (const [label, document, schemaUri] of [["plugin.json", plugin, pluginSchema
   }
 }
 
-if (plugin.name !== "auzzura-dm" || plugin.version !== "0.1.0") fail("unexpected package identity or version");
+if (plugin.name !== "auzzura-dm" || plugin.version !== "0.1.1") fail("unexpected package identity or version");
 if (plugin.name.includes("plugin") || plugin.name.includes("mcp")) fail("package name must not include platform transport terms");
 
 const servers = mcp.mcpServers ?? {};

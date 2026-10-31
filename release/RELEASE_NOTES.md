@@ -1,6 +1,14 @@
-# DM plugin 0.1.0 release notes
+# DM plugin 0.1.1 release notes
 
-Status: **release-train candidate — not submitted**
+Status: **marketplace metadata candidate — not submitted**
+
+This candidate adds the OpenAI listing, public-link, composer-icon, and
+review-case metadata required to prepare a remote MCP submission. It does not
+claim a portal scan, reviewer recording, submission, approval, or publication.
+
+Build artifact: `dist/dm-plugin-0.1.1.zip`
+
+SHA-256: `5fc65eabc20b39294297acba65f38fb081d6f1b4f9882bcf105359c963f836e6`
 
 This candidate packages one portable Agent Plugins root for OpenAI ChatGPT /
 Codex and Cursor, with a shared DM remote MCP connection and one minimal setup

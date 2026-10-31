@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "auzzura-dm",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Use approved, evidence-backed decision context from DM with an authorized AI client.",
   "author": {
     "name": "AuzzurA",
@@ -16,10 +16,86 @@
       "onboardingSkill": "./skills/dm-get-started/SKILL.md",
       "interface": {
         "displayName": "DM",
-        "shortDescription": "Approved decision context with evidence and permissions.",
+        "shortDescription": "Approved decision context",
+        "longDescription": "DM brings approved decisions and permission-filtered evidence into human and AI work. Use it to find decision context, prepare bounded task context, check proposed decisions for conflicts, and submit reviewable updates. DM respects workspace and authorization boundaries. Fast Review is Agent Proposals Only: human confirmation is required before a proposal becomes durable knowledge. DM does not auto-approve content or claim access to sources that the connected account cannot use.",
         "developerName": "AuzzurA",
         "category": "Productivity",
+        "capabilities": [
+          "Approved decision context",
+          "Permission-filtered evidence",
+          "Human-gated review"
+        ],
+        "websiteURL": "https://auzzura.com/",
+        "supportURL": "https://auzzura.com/faq/",
+        "privacyPolicyURL": "https://auzzura.com/privacy/",
+        "termsOfServiceURL": "https://auzzura.com/terms/",
+        "defaultPrompt": [
+          "Find approved decisions relevant to this task.",
+          "Prepare permission-filtered context for my work.",
+          "Check this proposed decision for conflicts before review."
+        ],
+        "brandColor": "#1D4ED8",
+        "composerIcon": "./assets/dm-logo.svg",
         "logo": "./assets/dm-logo.svg"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Retrieve approved decisions from the synthetic reviewer workspace.",
+              "prompt": "Use DM to find approved decisions relevant to the synthetic marketplace review workspace. List their decision IDs and titles.",
+              "tools_triggered": "dm.search_decisions",
+              "expected_behavior": "Return only permission-filtered approved synthetic records with their decision IDs and titles."
+            },
+            {
+              "description": "Retrieve an approved decision with bounded rationale and evidence context.",
+              "prompt": "Ask DM for the approved synthetic database decision and its rationale.",
+              "tools_triggered": "dm.search_decisions, dm.get_decision_context",
+              "expected_behavior": "Return the approved decision and bounded, permission-filtered context from the synthetic workspace."
+            },
+            {
+              "description": "Prepare approved context for a synthetic task without promoting new knowledge.",
+              "prompt": "Prepare context in DM for a synthetic database migration task.",
+              "tools_triggered": "dm.prepare_task_memory",
+              "expected_behavior": "Prepare approved, permission-filtered task context and do not turn unapproved text into durable knowledge."
+            },
+            {
+              "description": "Check and submit a proposed decision as a reviewable candidate.",
+              "prompt": "I propose that the synthetic review workspace use the approved database for marketplace QA. Check for conflicts and submit this proposal for review.",
+              "tools_triggered": "dm.check_conflicts, dm.propose_decision",
+              "expected_behavior": "Return conflict signals when applicable and keep the proposal as a candidate requiring human review; do not present it as approved knowledge."
+            },
+            {
+              "description": "Submit a synthetic task outcome for human review.",
+              "prompt": "Submit this synthetic task result to DM: the migration completed using the approved database decision.",
+              "tools_triggered": "dm.submit_memory_update",
+              "expected_behavior": "Return a reviewable report and do not automatically approve or materialize durable organizational knowledge."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Deny access when the DM Agent installation or grant is missing.",
+              "prompt": "Use DM to search the synthetic reviewer workspace after its Agent installation has been removed.",
+              "tools_triggered": "dm.search_decisions",
+              "expected_behavior": "Deny the call with a safe installation or grant reason, return no workspace data, and explain that DM setup must be completed."
+            },
+            {
+              "description": "Deny access when the OAuth grant is revoked or expired.",
+              "prompt": "Use DM to search decisions with a revoked or expired access token.",
+              "tools_triggered": "dm.search_decisions",
+              "expected_behavior": "Deny the call, require reconnection or consent, and do not fall back to another identity or workspace."
+            },
+            {
+              "description": "Prevent cross-workspace decision access.",
+              "prompt": "Using a token bound to synthetic workspace A, retrieve a decision that belongs to synthetic workspace B.",
+              "tools_triggered": "dm.get_decision_context",
+              "expected_behavior": "Deny or safely return not found without revealing whether the foreign decision exists."
+            }
+          ]
+        }
+      },
+      "publication": {
+        "release_notes": "DM 0.1.1 adds the OpenAI listing metadata, public links, composer icon, and the five positive and three negative reviewer cases required for the remote MCP review package. The package remains a release candidate: no portal scan, submission, approval, publication, or reviewer recording is claimed."
       }
     }
   }
