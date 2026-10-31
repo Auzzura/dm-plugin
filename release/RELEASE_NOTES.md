@@ -8,7 +8,7 @@ claim a portal scan, reviewer recording, submission, approval, or publication.
 
 Build artifact: `dist/dm-plugin-0.1.1.zip`
 
-SHA-256: `2b225b8edb5de5f0c069a1ff5d7c2fffa72338222de9aeaef19cf404159272ab`
+SHA-256: `8e317584118acc7ecb5b9924f5ac0abea6e0c57a1ac92e44d2beddc6b2578a6c`
 
 This candidate packages one portable Agent Plugins root for OpenAI ChatGPT /
 Codex and Cursor, with a shared DM remote MCP connection and one minimal setup
