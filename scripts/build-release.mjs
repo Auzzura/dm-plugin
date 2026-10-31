@@ -119,7 +119,13 @@ try {
   const prefix = `dm-plugin-${version}`;
   const stageRoot = path.join(stage, prefix);
   stageFiles(stageRoot);
-  execFileSync("zip", ["-X", "-D", "-q", archiveName, ...PUBLIC_FILES.map((relativePath) => path.join(prefix, relativePath))], { cwd: stage });
+  // Info-ZIP stores DOS timestamps in local time. Keep the build process
+  // timezone variable for the caller's reproducibility test, but normalize
+  // the archive writer itself so fixed UTC mtimes remain byte-identical.
+  execFileSync("zip", ["-X", "-D", "-q", archiveName, ...PUBLIC_FILES.map((relativePath) => path.join(prefix, relativePath))], {
+    cwd: stage,
+    env: { ...process.env, TZ: "UTC" },
+  });
   fs.copyFileSync(path.join(stage, archiveName), archive);
   assertArchiveContents(archive, prefix);
   const checksum = execFileSync("sha256sum", [archive], { cwd: outputDir, encoding: "utf8" }).trim();
