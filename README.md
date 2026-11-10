@@ -3,6 +3,13 @@
 Public distribution assets for DM, the governed shared-context workspace from
 AuzzurA.
 
+## Start here
+DM gives a connected coding agent the approved Rules, Skills and Decisions that apply to its task, and brings what it learned back as a proposal a person reviews. The next task picks up from what your team accepted, so you re-explain less. It connects to Claude Code, Cursor and other MCP clients with OAuth at https://api.dm.auzzura.com/mcp.
+
+- Create a DM account (free to try): https://dm.auzzura.com/?utm_source=github&utm_medium=listing&utm_campaign=dm_awareness
+- Setup walkthrough: https://auzzura.com/start/connect-claude-code/?utm_source=github&utm_medium=listing&utm_campaign=dm_awareness
+- What DM is: https://auzzura.com/?utm_source=github&utm_medium=listing&utm_campaign=dm_awareness
+
 This repository is intentionally separate from the DM backend. It will contain
 portable Agent Plugin manifests, public skills, release assets, and installation
 documentation. Authentication, workspace isolation, permissions, grants,
